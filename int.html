@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portfolio</title>
+    <link rel="stylesheet" href="int.css">
+</head>
+
+<body>
+
+    <!-- FIRST VIEW (INTRO SPLASH) -->
+    <section id="intro-screen" class="intro-screen">
+        <div class="intro-content">
+            <div class="avatar-circle">YN</div>
+            <h1 class="intro-title">Hey, I’m <span class="highlight">Your Name</span></h1>
+            <p class="intro-subtitle">
+                A Frontend Developer & UI/UX Enthusiast <br>
+                who crafts modern, responsive, and elegant web experiences.
+            </p>
+            <p class="scroll-hint">Scroll down to explore ↓</p>
+        </div>
+    </section>
+
+    <!-- SECOND VIEW (PORTFOLIO) -->
+    <section id="portfolio" class="portfolio hidden">
+        <div class="container">
+
+            <!-- HEADER -->
+            <header>
+                <div class="brand">
+                    <div class="logo">YN</div>
+                    <div>
+                        <div class="name">Your Name</div>
+                        <div class="role">Frontend Developer</div>
+                    </div>
+                </div>
+                <nav>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </header>
+
+            <!-- HERO SECTION -->
+            <div class="hero">
+                <!-- LEFT (Intro + Projects) -->
+                <div class="card intro">
+                    <h1>Crafting Modern Web Experiences</h1>
+                    <p>I specialize in building elegant, responsive, and functional websites that deliver seamless user
+                        experiences.</p>
+
+                    <div class="projects">
+                        <div class="project-card">
+                            <h3>Project One</h3>
+                            <p>Responsive portfolio website built with HTML, CSS & JS.</p>
+                        </div>
+                        <div class="project-card">
+                            <h3>Project Two</h3>
+                            <p>Fitness tracking app with interactive analytics.</p>
+                        </div>
+                        <div class="project-card">
+                            <h3>Project Three</h3>
+                            <p>Modern e-commerce UI with cart & payment system.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT (Profile Card) -->
+                <div class="card profile">
+                    <div class="avatar">YN</div>
+                    <div class="profile-name">Your Name</div>
+                    <div class="profile-role">Frontend Developer</div>
+
+                    <div class="cta">
+                        <a href="#" class="btn">Hire Me</a>
+                        <a href="#" class="btn ghost">Resume</a>
+                    </div>
+
+                    <div class="skills-section">
+                        <div class="skill">
+                            <div class="skill-name">HTML & CSS</div>
+                            <div class="progress"><i style="width: 95%"></i></div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-name">JavaScript</div>
+                            <div class="progress"><i style="width: 85%"></i></div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-name">React</div>
+                            <div class="progress"><i style="width: 80%"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT -->
+            <section id="about" class="card">
+                <div class="section-title">
+                    <h2>About Me</h2>
+                </div>
+                <p>
+                    I’m passionate about creating sleek and functional web designs.
+                    With strong skills in front-end development and UI/UX design,
+                    I help brands turn ideas into engaging digital experiences.
+                </p>
+            </section>
+
+            <!-- CONTACT -->
+            <section id="contact" class="card">
+                <div class="section-title">
+                    <h2>Contact</h2>
+                </div>
+                <p>Let’s collaborate on your next project! Reach me at:</p>
+                <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+                <div class="social">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer>
+                © 2025 Your Name — All rights reserved.
+            </footer>
+
+        </div>
+    </section>
+
+    <script>
+        // Always scroll to top on reload
+        window.onbeforeunload = () => window.scrollTo(0, 0);
+
+        const intro = document.getElementById("intro-screen");
+        const portfolio = document.getElementById("portfolio");
+
+        // Smooth transition effect
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+            const trigger = window.innerHeight / 4;
+
+            if (scrollY > trigger) {
+                intro.classList.add("fade-out");
+                portfolio.classList.remove("hidden");
+                portfolio.classList.add("fade-in");
+            } else {
+                intro.classList.remove("fade-out");
+                portfolio.classList.add("hidden");
+                portfolio.classList.remove("fade-in");
+            }
+        });
+    </script>
+</body>
+
+</html>
