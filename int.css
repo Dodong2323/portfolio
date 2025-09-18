@@ -2,7 +2,7 @@
     --bg: #0f172a;
     --accent: #7c3aed;
     --muted: #94a3b8;
-    --card: rgba(255, 255, 255, 0.03);
+    --card: rgba(255, 255, 255, 0.04);
 }
 
 /* RESET */
@@ -35,7 +35,7 @@ body {
     top: 0;
     left: 0;
     z-index: 2;
-    transition: opacity 1s ease;
+    transition: opacity 1s ease, transform 0.9s ease;
 }
 
 .intro-content {
@@ -109,9 +109,11 @@ body {
     }
 }
 
+/* this class is applied/removed by JS to fade the intro */
 .fade-out {
     opacity: 0;
     pointer-events: none;
+    transform: translateY(-30px);
 }
 
 /* ------------------ SECOND VIEW ------------------ */
@@ -122,7 +124,7 @@ body {
     padding-top: 100vh;
     /* below intro */
     opacity: 1;
-    transition: opacity 1s ease;
+    transition: opacity 0.8s ease;
 }
 
 .portfolio.hidden {
@@ -136,7 +138,7 @@ body {
 
 /* Container */
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
     padding: 40px 20px;
 }
@@ -201,7 +203,13 @@ nav a:hover {
     border-radius: 20px;
     padding: 30px;
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 .card h1 {
@@ -224,12 +232,13 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.05);
     padding: 18px;
     border-radius: 14px;
-    transition: transform 0.3s, background 0.3s;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-6px) scale(1.02);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 /* Profile Card */
@@ -324,10 +333,93 @@ nav a:hover {
     margin-bottom: 16px;
 }
 
+/* Contact grid (contact text + social icons) */
+.contact-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.contact-info {
+    flex: 1 1 60%;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+}
+
+/* Social icon buttons (inline next to contact) */
+.social-icons a {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #e6eef6;
+    font-size: 18px;
+    text-decoration: none;
+    transition: transform 0.22s ease, background 0.22s ease;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.social-icons a:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+/* small muted text */
+.small-muted {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px
+}
+
 /* Footer */
 footer {
     margin-top: 40px;
-    text-align: center;
-    font-size: 14px;
-    color: var(--muted);
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* align to left */
+}
+
+.footer-social {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #e6eef6;
+    font-size: 18px;
+    text-decoration: none;
+    transition: transform 0.22s ease, background 0.22s ease;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-social a:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-4px);
 }

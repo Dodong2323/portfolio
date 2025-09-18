@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modern Portfolio</title>
-    <link rel="stylesheet" href="int.css">
+    <link rel="stylesheet" href="int.css" />
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
@@ -16,7 +18,7 @@
             <div class="avatar-circle">YN</div>
             <h1 class="intro-title">Hey, I’m <span class="highlight">Your Name</span></h1>
             <p class="intro-subtitle">
-                A Frontend Developer & UI/UX Enthusiast <br>
+                A Frontend Developer & UI/UX Enthusiast <br />
                 who crafts modern, responsive, and elegant web experiences.
             </p>
             <p class="scroll-hint">Scroll down to explore ↓</p>
@@ -107,51 +109,40 @@
                 </p>
             </section>
 
-            <!-- CONTACT -->
+            <!-- CONTACT (now with social icons next to contact box) -->
             <section id="contact" class="card">
                 <div class="section-title">
                     <h2>Contact</h2>
                 </div>
-                <p>Let’s collaborate on your next project! Reach me at:</p>
-                <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-                <div class="social">
-                    <a href="#">LinkedIn</a>
-                    <a href="#">GitHub</a>
-                    <a href="#">Twitter</a>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <p>Let’s collaborate on your next project! Reach me at:</p>
+                        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+                        <p class="small-muted">Prefer messages? Use LinkedIn/GitHub below.</p>
+                    </div>
+
                 </div>
             </section>
-
-            <!-- FOOTER -->
             <footer>
-                © 2025 Your Name — All rights reserved.
+                <div class="footer-content">
+                    <div class="footer-social">
+                        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://facebook.com/share/16EKgb5iE8/" target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/osloypassyy?igh=bXcOGw5OGZqa2Jk target=" _blank"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
             </footer>
 
         </div>
     </section>
 
-    <script>
-        // Always scroll to top on reload
-        window.onbeforeunload = () => window.scrollTo(0, 0);
-
-        const intro = document.getElementById("intro-screen");
-        const portfolio = document.getElementById("portfolio");
-
-        // Smooth transition effect
-        window.addEventListener("scroll", () => {
-            const scrollY = window.scrollY;
-            const trigger = window.innerHeight / 4;
-
-            if (scrollY > trigger) {
-                intro.classList.add("fade-out");
-                portfolio.classList.remove("hidden");
-                portfolio.classList.add("fade-in");
-            } else {
-                intro.classList.remove("fade-out");
-                portfolio.classList.add("hidden");
-                portfolio.classList.remove("fade-in");
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

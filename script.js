@@ -1,30 +1,24 @@
-window.addEventListener("load", () => {
-    // Always reset scroll to top on reload
-    window.scrollTo(0, 0);
+// revert to the original working transition logic:
+// keep intro overlay fixed and fade with classes, show portfolio after scrolling past trigger
 
-    const intro = document.getElementById("intro-screen");
-    const portfolio = document.getElementById("portfolio");
+// Always scroll to top on reload
+window.onbeforeunload = () => window.scrollTo(0, 0);
 
-    // Reset state so intro is default
-    intro.style.display = "flex";
-    intro.style.opacity = "1";
-    intro.style.transform = "translateY(0)";
+const intro = document.getElementById("intro-screen");
+const portfolio = document.getElementById("portfolio");
 
-    portfolio.classList.remove("show");
-    portfolio.classList.add("hidden");
-});
-
+// Smooth transition effect (original approach)
 window.addEventListener("scroll", () => {
-    const intro = document.getElementById("intro-screen");
-    const portfolio = document.getElementById("portfolio");
+    const scrollY = window.scrollY || window.pageYOffset;
+    const trigger = window.innerHeight / 4; // same trigger as before
 
-    if (window.scrollY > 50) {
-        intro.style.opacity = "0";
-        intro.style.transform = "translateY(-50px)";
-        setTimeout(() => {
-            intro.style.display = "none"; // fully hide intro
-            portfolio.classList.remove("hidden");
-            portfolio.classList.add("show");
-        }, 800);
+    if (scrollY > trigger) {
+        intro.classList.add("fade-out");
+        portfolio.classList.remove("hidden");
+        portfolio.classList.add("fade-in");
+    } else {
+        intro.classList.remove("fade-out");
+        portfolio.classList.add("hidden");
+        portfolio.classList.remove("fade-in");
     }
 });
