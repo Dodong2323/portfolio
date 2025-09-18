@@ -49,13 +49,11 @@ body {
     height: 120px;
     margin: 0 auto 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 36px;
-    color: #fff;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
@@ -143,53 +141,6 @@ body {
     padding: 40px 20px;
 }
 
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 60px;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-}
-
-.name {
-    font-weight: 700;
-    font-size: 18px;
-}
-
-.role {
-    font-size: 14px;
-    color: var(--muted);
-}
-
-nav a {
-    margin-left: 20px;
-    font-size: 15px;
-    text-decoration: none;
-    color: #e6eef6;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: var(--accent);
-}
-
 /* Hero */
 .hero {
     display: grid;
@@ -246,17 +197,14 @@ nav a:hover {
     text-align: center;
 }
 
-.profile .avatar {
-    width: 100px;
-    height: 100px;
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* keeps aspect ratio while filling */
     border-radius: 50%;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: 700;
+    /* ensures image itself is circular */
+    display: block;
 }
 
 .profile-name {
@@ -422,4 +370,100 @@ footer {
     background: var(--accent);
     color: #fff;
     transform: translateY(-4px);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    animation: scaleIn 0.3s ease;
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    color: #cbd5e1;
+}
+
+.modal-content .btn {
+    display: inline-block;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 26px;
+    cursor: pointer;
+    color: #fff;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#about {
+    margin-bottom: 60px;
+    /* space below About section */
+    padding: 30px;
+    /* keep good padding inside */
+}
+
+#contact {
+    margin-top: 40px;
+    /* space above Contact section */
+    padding: 30px;
+    /* consistent inside spacing */
+}
+
+/* Profile Image Modal */
+.image-modal {
+    max-width: 90%;
+    max-height: 90%;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.image-modal img {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 0;
+    /* remove circle style */
+    display: block;
 }

@@ -15,8 +15,11 @@
     <!-- FIRST VIEW (INTRO SPLASH) -->
     <section id="intro-screen" class="intro-screen">
         <div class="intro-content">
-            <div class="avatar-circle">YN</div>
-            <h1 class="intro-title">Hey, I’m <span class="highlight">Your Name</span></h1>
+            <div class="avatar-circle">
+                <img src="/images/sir rj.png" alt="Profile Picture">
+            </div>
+
+            <h1 class="intro-title">Hey, I’m <span class="highlight">Christian</span></h1>
             <p class="intro-subtitle">
                 A Frontend Developer & UI/UX Enthusiast <br />
                 who crafts modern, responsive, and elegant web experiences.
@@ -29,22 +32,6 @@
     <section id="portfolio" class="portfolio hidden">
         <div class="container">
 
-            <!-- HEADER -->
-            <header>
-                <div class="brand">
-                    <div class="logo">YN</div>
-                    <div>
-                        <div class="name">Your Name</div>
-                        <div class="role">Frontend Developer</div>
-                    </div>
-                </div>
-                <nav>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </header>
-
             <!-- HERO SECTION -->
             <div class="hero">
                 <!-- LEFT (Intro + Projects) -->
@@ -54,31 +41,52 @@
                         experiences.</p>
 
                     <div class="projects">
-                        <div class="project-card">
-                            <h3>Project One</h3>
-                            <p>Responsive portfolio website built with HTML, CSS & JS.</p>
+                        <div class="project-card" data-project="capstone">
+                            <h3>Capstone Project</h3>
+                            <p>Fitness tracking & progress — web + mobile design with sales system.</p>
                         </div>
-                        <div class="project-card">
-                            <h3>Project Two</h3>
-                            <p>Fitness tracking app with interactive analytics.</p>
+                        <div class="project-card" data-project="project2">
+                            <h3>Pet Management System</h3>
+                            <p>Manage pets’ records, health, and appointments with ease.</p>
                         </div>
-                        <div class="project-card">
+                        <div class="project-card" data-project="project3">
                             <h3>Project Three</h3>
                             <p>Modern e-commerce UI with cart & payment system.</p>
                         </div>
+
+                        <!-- 🔥 Added Projects -->
+                        <div class="project-card" data-project="nextjs">
+                            <h3>NextJs Attendance</h3>
+                            <p>Web-based attendance tracker built with Next.js.</p>
+                        </div>
+                        <div class="project-card" data-project="login">
+                            <h3>Basic Login</h3>
+                            <p>Simple login system using modern authentication basics.</p>
+                        </div>
+                        <div class="project-card" data-project="gamedev">
+                            <h3>Game Dev</h3>
+                            <p>Small game development experiments and prototypes.</p>
+                        </div>
                     </div>
+
+
                 </div>
 
                 <!-- RIGHT (Profile Card) -->
                 <div class="card profile">
-                    <div class="avatar">YN</div>
-                    <div class="profile-name">Your Name</div>
+                    <div class="avatar-circle">
+                        <img src="/images/sir rj.png" alt="Profile Picture">
+                    </div>
+
+                    <div class="profile-name">Christian</div>
                     <div class="profile-role">Frontend Developer</div>
 
                     <div class="cta">
-                        <a href="#" class="btn">Hire Me</a>
-                        <a href="#" class="btn ghost">Resume</a>
+                        <a href="mailto:youremail@example.com" class="btn">Hire Me</a>
+                        <a href="/images/Resume.jpg" target="_blank" class="btn ghost">Resume</a>
+
                     </div>
+
 
                     <div class="skills-section">
                         <div class="skill">
@@ -96,20 +104,29 @@
                     </div>
                 </div>
             </div>
-
             <!-- ABOUT -->
             <section id="about" class="card">
                 <div class="section-title">
                     <h2>About Me</h2>
                 </div>
                 <p>
-                    I’m passionate about creating sleek and functional web designs.
-                    With strong skills in front-end development and UI/UX design,
-                    I help brands turn ideas into engaging digital experiences.
+                    I am a person driven by perseverance and faith, always striving to grow not only in my craft but
+                    also in character.
+                    I believe that every challenge is an opportunity to rise higher and create something meaningful.
+                    With a heart
+                    dedicated to both my work and my loved ones, I value teamwork, humility, and the spirit of lifting
+                    others up.
+                </p>
+                <p>
+                    I treat my skills not just as tools, but as gifts to serve others from building elegant web
+                    experiences to
+                    solving real-world problems through design and development. Whether it’s collaborating with
+                    workmates, caring for
+                    my family, or improving my craft, I put passion, discipline, and purpose into everything I do.
                 </p>
             </section>
 
-            <!-- CONTACT (now with social icons next to contact box) -->
+            <!-- CONTACT -->
             <section id="contact" class="card">
                 <div class="section-title">
                     <h2>Contact</h2>
@@ -118,12 +135,12 @@
                 <div class="contact-grid">
                     <div class="contact-info">
                         <p>Let’s collaborate on your next project! Reach me at:</p>
-                        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+                        <p>Email: <a href="mailto:youremail@example.com">christiannoynay5@gmail</a></p>
                         <p class="small-muted">Prefer messages? Use LinkedIn/GitHub below.</p>
                     </div>
-
                 </div>
             </section>
+
             <footer>
                 <div class="footer-content">
                     <div class="footer-social">
@@ -131,7 +148,7 @@
                                 class="fab fa-github"></i></a>
                         <a href="https://facebook.com/share/16EKgb5iE8/" target="_blank" aria-label="Facebook"><i
                                 class="fab fa-facebook"></i></a>
-                        <a href="https://instagram.com/osloypassyy?igh=bXcOGw5OGZqa2Jk target=" _blank"
+                        <a href="https://instagram.com/osloypassyy?igh=bXcOGw5OGZqa2Jk" target="_blank"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn"><i
                                 class="fab fa-linkedin"></i></a>
@@ -141,6 +158,16 @@
 
         </div>
     </section>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-desc"></p>
+            <a id="modal-link" href="#" target="_blank" class="btn">View Project</a>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
