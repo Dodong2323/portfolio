@@ -3,6 +3,8 @@ window.onbeforeunload = () => window.scrollTo(0, 0);
 
 const intro = document.getElementById("intro-screen");
 const portfolio = document.getElementById("portfolio");
+const header = document.querySelector(".site-header");
+const themeToggle = document.getElementById("theme-toggle");
 
 window.addEventListener("scroll", () => {
     const scrollY = window.scrollY || window.pageYOffset;
@@ -12,10 +14,14 @@ window.addEventListener("scroll", () => {
         intro.classList.add("fade-out");
         portfolio.classList.remove("hidden");
         portfolio.classList.add("fade-in");
+        header && header.classList.remove("hidden");
+        document.documentElement.classList.add('condensed');
     } else {
         intro.classList.remove("fade-out");
         portfolio.classList.add("hidden");
         portfolio.classList.remove("fade-in");
+        header && header.classList.add("hidden");
+        document.documentElement.classList.remove('condensed');
     }
 });
 
@@ -30,7 +36,7 @@ const projectData = {
     capstone: {
         title: "Capstone Project",
         desc: "A fitness progress and tracking platform, available on both web and mobile. Includes analytics dashboards, workout logging, and sales integration for premium features.",
-        link: "https://http://app.cnergy.site/"
+        link: "https://app.cnergy.site/"
     },
     project2: {
         title: "Pet Management System",
@@ -71,6 +77,28 @@ document.querySelectorAll(".project-card").forEach(card => {
         modalLink.href = data.link;
         modal.classList.remove("hidden");
     });
+
+    // Hover video preview (lazy create on first hover)
+    let videoEl = null;
+    const videoSrc = card.getAttribute('data-video');
+    if (videoSrc) {
+        const ensureVideo = () => {
+            if (!videoEl) {
+                videoEl = document.createElement('video');
+                videoEl.className = 'preview';
+                videoEl.src = videoSrc;
+                videoEl.muted = true;
+                videoEl.loop = true;
+                videoEl.playsInline = true;
+                card.prepend(videoEl);
+            }
+            if (videoEl.paused) videoEl.play().catch(() => {});
+        };
+        card.addEventListener('mouseenter', ensureVideo);
+        card.addEventListener('focusin', ensureVideo);
+        card.addEventListener('mouseleave', () => { if (videoEl) videoEl.pause(); });
+        card.addEventListener('focusout', () => { if (videoEl) videoEl.pause(); });
+    }
 });
 
 // Close modal
@@ -78,4 +106,66 @@ closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
 window.addEventListener("click", e => {
     if (e.target === modal) modal.classList.add("hidden");
 });
+
+// Reveal-on-scroll animations for second view
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+        }
+    })
+}, { threshold: 0.15 });
+
+revealEls.forEach(el => io.observe(el));
+
+// Project filters
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+function applyFilter(filter) {
+    projectCards.forEach(card => {
+        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+        const show = filter === 'all' || tags.includes(filter);
+        card.style.display = show ? '' : 'none';
+    });
+}
+
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyFilter(btn.dataset.filter);
+    });
+});
+
+// Copy email action
+const copyBtn = document.getElementById('copy-email');
+if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText('christiannoynay5@gmail.com');
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => copyBtn.textContent = 'Copy Email', 1200);
+        } catch (e) {
+            copyBtn.textContent = 'Press Ctrl+C';
+        }
+    });
+}
+
+// Theme toggling with persistence
+const rootEl = document.documentElement;
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+    rootEl.classList.add('light');
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', 'true');
+}
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const isLight = rootEl.classList.toggle('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+    });
+}
 
