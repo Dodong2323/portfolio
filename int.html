@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <!-- Inter font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <!-- EmailJS (optional, for direct send without opening email app) -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -57,6 +59,14 @@
         <div class="intro-content">
             <div class="avatar-circle">
                 <img src="images/profile.png" alt="Profile Picture">
+            </div>
+
+            <div class="intro-floats" aria-hidden="true">
+                <span class="float icon e1" title="Idea">💡</span>
+                <span class="float icon e2" title="Code">&lt;/&gt;</span>
+                <span class="float icon i1" title="JavaScript">JS</span>
+                <span class="float icon i4" title="React">⚛️</span>
+                <span class="float icon i5" title="Laptop">💻</span>
             </div>
 
             <h1 class="intro-title">Hey, I’m <span class="highlight">Christian</span></h1>
@@ -140,8 +150,8 @@
                     </ul>
 
                     <div class="profile-video">
-                        <video src="images/previews/coding-sample.mp4" playsinline muted loop controls poster="images/previews/coding-poster.jpg"></video>
-                        <div class="video-caption">Preview: coding demo (replace with your works)</div>
+                        <video src="images/vid.mp4" autoplay muted playsinline loop></video>
+                        <div class="video-caption">Preview: recent work</div>
                     </div>
 
 
@@ -170,6 +180,63 @@
                 </p>
             </section>
 
+            <!-- EDUCATION -->
+            <section id="education" class="card reveal edu-card">
+                <div class="section-title">
+                    <h2>Education</h2>
+                </div>
+
+                <div class="edu-timeline">
+                    <div class="edu-item">
+                        <div class="edu-dot"></div>
+                        <div class="edu-details">
+                            <div class="edu-row">
+                                <h3 class="edu-title">Bachelor of Science in Information Technology</h3>
+                                <span class="edu-year">2022 – 2026</span>
+                            </div>
+                            <div class="edu-meta">Cagayan de Oro College</div>
+                            <div class="edu-meta small">Max Suniel Street, Carmen, 900 Cagayan de Oro City, Misamis Oriental</div>
+                            <div class="edu-badges">
+                                <span class="badge">Web Dev</span>
+                                <span class="badge">UI/UX</span>
+                                <span class="badge">Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-dot"></div>
+                        <div class="edu-details">
+                            <div class="edu-row">
+                                <h3 class="edu-title">Frontend Focus & Continuous Learning</h3>
+                                <span class="edu-year">Present</span>
+                            </div>
+                            <div class="edu-meta">Building modern, responsive web apps</div>
+                            <div class="edu-badges">
+                                <span class="badge">React</span>
+                                <span class="badge">TypeScript</span>
+                                <span class="badge">Next.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- LOCATION -->
+            <section id="location" class="card reveal loc-card-wrap">
+                <div class="section-title">
+                    <h2>Location</h2>
+                </div>
+                <div class="loc-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="loc-details">
+                        <div class="loc-title">Based in</div>
+                        <div class="loc-text">Lingating, Baungon, Bukidnon • Open to remote</div>
+                    </div>
+                </div>
+            </section>
+
             <!-- CONTACT -->
             <section id="contact" class="card reveal">
                 <div class="section-title">
@@ -186,20 +253,34 @@
                             <a href="images/Resume.jpg" target="_blank" class="btn" aria-label="Open resume">Open Resume</a>
                         </div>
                     </div>
+                    <div class="contact-form">
+                        <form id="contact-form" novalidate>
+                            <div class="field">
+                                <label for="cf-name">Name</label>
+                                <input id="cf-name" name="name" type="text" placeholder="Your name" required />
+                            </div>
+                            <div class="field">
+                                <label for="cf-email">Email</label>
+                                <input id="cf-email" name="email" type="email" placeholder="Your email (optional)" />
+                            </div>
+                            <div class="field">
+                                <label for="cf-message">Message</label>
+                                <textarea id="cf-message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn" aria-label="Send direct email">Send Message</button>
+                            <p id="cf-note" class="small-muted" aria-live="polite"></p>
+                        </form>
+                    </div>
                 </div>
             </section>
 
             <footer>
                 <div class="footer-content">
                     <div class="footer-social">
-                        <a href="https://github.com/Dodong2323" target="_blank" aria-label="GitHub"><i
-                                class="fab fa-github"></i></a>
-                        <a href="https://facebook.com/share/16EKgb5iE8/" target="_blank" aria-label="Facebook"><i
-                                class="fab fa-facebook"></i></a>
-                        <a href="https://instagram.com/osloypassyy?igh=bXcOGw5OGZqa2Jk" target="_blank"
-                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://linkedin.com/in/" target="_blank" aria-label="LinkedIn"><i
-                                class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Dodong2323" target="_blank" aria-label="GitHub" class="socialContainer gh"><i class="fab fa-github socialSvg"></i></a>
+                        <a href="https://facebook.com/share/16EKgb5iE8/" target="_blank" aria-label="Facebook" class="socialContainer fb"><i class="fab fa-facebook-f socialSvg"></i></a>
+                        <a href="https://instagram.com/osloypassyy?igh=bXcOGw5OGZqa2Jk" target="_blank" aria-label="Instagram" class="socialContainer ig"><i class="fab fa-instagram socialSvg"></i></a>
+                        <a href="https://linkedin.com/in/" target="_blank" aria-label="LinkedIn" class="socialContainer li"><i class="fab fa-linkedin-in socialSvg"></i></a>
                     </div>
                 </div>
             </footer>

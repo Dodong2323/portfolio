@@ -154,6 +154,28 @@ if (copyBtn) {
     });
 }
 
+// Contact form: open mailto with prefilled subject/body
+const contactForm = document.getElementById('contact-form');
+const cfNote = document.getElementById('cf-note');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('cf-name').value.trim();
+        const email = document.getElementById('cf-email').value.trim();
+        const message = document.getElementById('cf-message').value.trim();
+        if (!message) {
+            if (cfNote) cfNote.textContent = 'Please enter a message.';
+            return;
+        }
+        const to = 'christiannoynay5@gmail.com';
+        const subject = encodeURIComponent(`Portfolio message from ${name || 'Visitor'}`);
+        const bodyContent = `Message:%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A` + (email ? `Reply-to: ${encodeURIComponent(email)}` : '');
+        const mailtoLink = `mailto:${to}?subject=${subject}&body=${bodyContent}`;
+        window.location.href = mailtoLink;
+        if (cfNote) cfNote.textContent = 'Opening your email app...';
+    });
+}
+
 // Theme toggling with persistence
 const rootEl = document.documentElement;
 const savedTheme = localStorage.getItem('theme');
