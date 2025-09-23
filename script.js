@@ -5,8 +5,6 @@ const intro = document.getElementById("intro-screen");
 const portfolio = document.getElementById("portfolio");
 const header = document.querySelector(".site-header");
 const themeToggle = document.getElementById("theme-toggle");
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobile-menu');
 
 window.addEventListener("scroll", () => {
     const scrollY = window.scrollY || window.pageYOffset;
@@ -218,20 +216,5 @@ if (themeToggle) {
     });
 }
 
-// Mobile menu toggle
-if (burger && mobileMenu) {
-    const setOpen = (open) => {
-        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-        mobileMenu.hidden = !open;
-    };
-    burger.addEventListener('click', () => {
-        const open = burger.getAttribute('aria-expanded') !== 'true';
-        setOpen(open);
-    });
-    // Close on link click
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
-    // Mobile theme toggle sync
-    const mTheme = document.getElementById('m-theme');
-    if (mTheme) mTheme.addEventListener('click', () => themeToggle && themeToggle.click());
-}
+// (reverted: no mobile burger menu)
 
