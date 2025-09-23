@@ -44,6 +44,9 @@
                     <span class="icon moon" aria-hidden="true">🌙</span>
                 </button>
             </nav>
+            <button id="burger" class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
@@ -53,6 +56,16 @@
     <div class="shade" aria-hidden="true"></div>
     <!-- Nebula/aurora layer for calm galaxy colors -->
     <div class="nebula" aria-hidden="true"></div>
+
+    <!-- Mobile Menu -->
+    <nav id="mobile-menu" class="mobile-menu" hidden>
+        <a href="#portfolio" class="m-link">Work</a>
+        <a href="#about" class="m-link">About</a>
+        <a href="#contact" class="m-link">Contact</a>
+        <div class="m-actions">
+            <button id="m-theme" class="btn ghost" aria-label="Toggle theme (mobile)">Toggle Theme</button>
+        </div>
+    </nav>
 
     <!-- FIRST VIEW (INTRO SPLASH) -->
     <section id="intro-screen" class="intro-screen">

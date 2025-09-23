@@ -116,6 +116,24 @@ body::after {
 
 .nav a:hover { opacity: 1; color: #fff; background: rgba(124,58,237,0.22); transform: translateY(-1px); }
 
+/* Burger (mobile only) */
+.burger { display: none; width: 42px; height: 38px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); margin-left: 10px; align-items: center; justify-content: center; gap: 4px; }
+.burger span { display: block; width: 20px; height: 2px; background: #e6eef6; border-radius: 2px; }
+:root.light .burger { border-color: rgba(0,0,0,0.12); background: rgba(2,132,199,0.10); }
+:root.light .burger span { background: #0f172a; }
+
+.mobile-menu { position: fixed; top: 62px; left: 0; right: 0; background: rgba(15,23,42,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 9998; display: grid; gap: 10px; padding: 14px 20px; }
+.mobile-menu .m-link { color: #e6eef6; text-decoration: none; font-weight: 700; padding: 10px 12px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+.mobile-menu .m-link:hover { background: rgba(124,58,237,0.22); }
+.mobile-menu .m-actions { display: flex; gap: 10px; }
+:root.light .mobile-menu { background: rgba(255,255,255,0.92); border-bottom-color: rgba(0,0,0,0.06); }
+:root.light .mobile-menu .m-link { color: #0f172a; background: rgba(2,132,199,0.10); border-color: rgba(2,132,199,0.18); }
+
+@media (max-width: 900px) {
+    .nav { display: none; }
+    .burger { display: inline-flex; }
+}
+
 /* ------------------ FIRST VIEW ------------------ */
 .intro-screen {
     height: 100vh;
