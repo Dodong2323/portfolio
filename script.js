@@ -167,6 +167,31 @@ if (contactForm) {
             if (cfNote) cfNote.textContent = 'Please enter a message.';
             return;
         }
+
+        // If EmailJS is loaded and configured, send with EmailJS; otherwise fallback to mailto
+        const hasEmailJS = typeof emailjs !== 'undefined' && emailjs.send;
+        if (hasEmailJS && window.EMAILJS_PUBLIC_KEY && window.EMAILJS_SERVICE_ID && window.EMAILJS_TEMPLATE_ID) {
+            if (cfNote) cfNote.textContent = 'Sending...';
+            emailjs.init(window.EMAILJS_PUBLIC_KEY);
+            emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, {
+                from_name: name || 'Visitor',
+                from_email: email || 'noreply@example.com',
+                message,
+                to_email: 'christiannoynay5@gmail.com'
+            }).then(() => {
+                if (cfNote) cfNote.textContent = 'Message sent successfully!';
+                contactForm.reset();
+            }).catch(() => {
+                if (cfNote) cfNote.textContent = 'Failed to send via EmailJS. Opening email app...';
+                const to = 'christiannoynay5@gmail.com';
+                const subject = encodeURIComponent(`Portfolio message from ${name || 'Visitor'}`);
+                const bodyContent = `Message:%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A` + (email ? `Reply-to: ${encodeURIComponent(email)}` : '');
+                const mailtoLink = `mailto:${to}?subject=${subject}&body=${bodyContent}`;
+                window.location.href = mailtoLink;
+            });
+            return;
+        }
+
         const to = 'christiannoynay5@gmail.com';
         const subject = encodeURIComponent(`Portfolio message from ${name || 'Visitor'}`);
         const bodyContent = `Message:%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A` + (email ? `Reply-to: ${encodeURIComponent(email)}` : '');
